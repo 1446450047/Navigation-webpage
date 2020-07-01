@@ -65,7 +65,7 @@ const render = () => {
 render();
 //点击添加按钮之后向hash数组里面添加要添加网页的信息，然后渲染hash数组
 $(".addButton").on("click", () => {
-  let url = window.prompt("请输入你要添加得网址：");
+  let url = window.prompt("请输入你要添加得网址：") || "";
   if (url.indexOf("http") !== 0) {
     url = "https://" + url;
   }
