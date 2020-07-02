@@ -49,7 +49,6 @@ const render = () => {
                 </li>`).insertBefore($lastLi);
     //设置生成的背景颜色
     let color = "#" + Math.floor(Math.random() * (2 << 23)).toString(16);
-    console.log(color);
     $li.css("background", color);
     $li.on("click", () => {
       window.open(node.url);
@@ -65,11 +64,12 @@ const render = () => {
 render();
 //点击添加按钮之后向hash数组里面添加要添加网页的信息，然后渲染hash数组
 $(".addButton").on("click", () => {
-  let url = window.prompt("请输入你要添加得网址：") || "";
-  if (url.indexOf("http") !== 0) {
+  let url = window.prompt("请输入你要添加得网址：");
+  if(url === ""){
+    return;
+  }else if(url.indexOf("http") !== 0) {
     url = "https://" + url;
   }
-
   hashmap.push({ logo: simplyUrl(url)[0], url: url });
   render();
 });
